@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>OpenFOAM安装后的第一个案例的理解与运行（pitzDaily） - Our time</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon-32x32.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.min.f78f569c52930482d825f538adc06750cd316cb2520a7c9f09bc21535b65d628.css">
+  
+
+  
+
+  
+    
+    <meta property="og:title" content="OpenFOAM安装后的第一个案例的理解与运行（pitzDaily）"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://qimensdu.github.io/blog/openfoam%E5%AE%89%E8%A3%85%E5%90%8E%E8%B7%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AE%97%E4%BE%8B/"/>
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@zerostaticio"/>
+    <meta name="twitter:creator" content="@zerostaticio"/>
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-home">
+      <a href="/">
+        <span>Home</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-blog">
+      <a href="/blog/">
+        <span>Blog</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-team">
+      <a href="/team/">
+        <span>Team</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-achievement">
+      <a href="/achievement/">
+        <span>Achievement</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-about us">
+      <a href="/about-us/">
+        <span>About us</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-contact">
+      <a href="/contact/">
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://qimensdu.github.io/"><img height=36px alt="Serif - A Hugo Business Theme" src="/images/logo/logo.jpg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://qimensdu.github.io/"><img height=100px alt="Serif - A Hugo Business Theme" src="/images/logo/logo-mobile.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-home ">
+      <a href="/">
+        
+        <span>Home</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-blog ">
+      <a href="/blog/">
+        
+        <span>Blog</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-team ">
+      <a href="/team/">
+        
+        <span>Team</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-achievement ">
+      <a href="/achievement/">
+        
+        <span>Achievement</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-about us ">
+      <a href="/about-us/">
+        
+        <span>About us</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+    
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <h1 class="title">OpenFOAM安装后的第一个案例的理解与运行（pitzDaily）</h1>
+      <div class="content"><p>/<em>运用算例的目的：理解运算过程，检测OpenFOAM安装是否成功</em>/
+（学习半年后补充）对于Openfoam的运算过程，可以类比为数据的流动，首先网格的划分，计算域划分为无数的小块，计算机记录每一个小体积的中心点位置成为一个序列，每个中心点上的数据会结合控制方程变成代数式。0文件需要设置的是最外边的控制体没有来自于周边体积的数据，所以需要用户来设置。边界设定后数据不会发生更改，迭代从有差的地方开始，在一个控制体自我迭代结束后，把迭代结果给下一个控制体。下一个控制体开始迭代。以此进行下去。所说的湍流模型仅仅是增加的控制方程，目的是求解雷诺应力项（雷诺应力项是有由于时均化产生的，物理意义上讲是由于流体的脉动结果造成的）。壁面函数是为了更好的描述流体沿壁面流动而添加的方程，这样可以减少边界网格数目，加快计算。</p>
+<h2 id="1安装openfoam8-结束配置后开始算例">1.安装openfoam8 ，结束配置后开始算例**</h2>
+<h2 id="2依据openfoam官方教程进行算例的复制">2.依据openfoam官方教程进行算例的复制**</h2>
+<p>因为官方教程是英文版。可以参考东岳流体网上的翻译版本<a href="http://dyfluid.com/">东岳流体</a>
+复制的过程如下（与教程基本一致）
+###（1）我的电脑上没有run文件夹，所以我直接创建了run文件夹
+<img src="https://img-blog.csdnimg.cn/20210706112529723.png#pic_center" alt="在这里插入图片描述"></p>
+<p>$意思我理解为地址的缩写
+这条命令等价于</p>
+<pre><code>mkdir -p /home/yongqing_xiao/OpenFOAM/yongqing_xiao-8/run
+</code></pre><p>###（2）进入run文件夹</p>
+<pre><code>cd  $FOAM_RUN
+</code></pre><h3 id="3复制算例放run文件夹这命令与教程不同因为我的tutorials文件放入了opt目录">(3)复制算例放run文件夹,这命令与教程不同，因为我的tutorials文件放入了opt目录</h3>
+<pre><code>cp -r /opt/openfoam8/tutorials/incompressible/sileFoam/pitzDaily  /home/yongqing_xiao/OpenFOAM/yongqing_xiao-8/run/
+</code></pre><h3 id="4复制成功后进入文件夹">(4)复制成功后进入文件夹</h3>
+<pre><code>cd  $FOAM_RUN/pitzDaily
+</code></pre><h2 id="3利用tree命令查看包含的所有文件">3.利用tree命令查看包含的所有文件**</h2>
+<pre><code>tree
+</code></pre><p>没有此命令的安装此命令</p>
+<pre><code>sudo apt-get install tree
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20210706100230708.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="run目录下的文件">**4.##</p>
+<h2 id="4文件夹的内容">4.文件夹的内容</h2>
+<h3 id="1costant文件下transportproperties定义介质的材料属性">(1)costant文件下transportProperties定义介质的材料属性</h3>
+<p>在此文件中定义了粘度。直接点击文件查看即可
+<img src="https://img-blog.csdnimg.cn/20210706101102190.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">mometumTransport文件指定的是湍流模型（不同的版本型号可能有不同文件名）<img src="https://img-blog.csdnimg.cn/20210706101524131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="此文件选取的是kepsilon">
+//注释的部分都是湍流模型，在选用不同的湍流模型时，需要对应的修改0文件夹中的文件
+laminar    无需修改
+kEpsilon  修改k文件与epsilon文件
+komega 修改k文件与omega文件
+LRR    修改k、epsilon和R文件
+smagorinsky  修改nusgs文件
+oneeqeddy 修改k与nusgs文件
+SpalartAllmaras  修改nusgs与nutilda文件</p>
+<h3 id="20文件夹下的k文件指定各边界的湍动能">(2)0文件夹下的k文件指定各边界的湍动能</h3>
+<p><img src="https://img-blog.csdnimg.cn/20210706103129198.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">本算例中inlet边界类型fixedValue,值为0.375;outlet边界类型为zeroGradient；upperwall边界类型为kqrwallFunction，值为0.375；还有lowerwall以及forntandback
+epsilon文件与k文件类似，指定各边界条件的湍流耗散率
+<img src="https://img-blog.csdnimg.cn/20210706103705827.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">P文件与U文件无论采用哪种模型都需要修改
+P文件中指定各边界的压力，需注意的是，在不可压缩流动问体重，压力的单位是m2/s2，量纲为压力与密度的比值
+<img src="https://img-blog.csdnimg.cn/20210706104001925.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">
+本算例中，指定出口outflow的压力为0，其余为zerogradient
+U文件中指定边界的速度分布
+<img src="https://img-blog.csdnimg.cn/20210706104637405.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">本算例中入口inlet速度为10m/s,outlet边界为zeroGradient，其它壁面边界为noslip</p>
+<p>###（3）system文件
+blockmeshdict：指定几何与网格参数
+controldict ：指定求解过程控制参数
+fvschemes：指定求解算法
+fvsolution：指定求解控制参数
+streamline：流线生成</p>
+<h2 id="5求解计算">5.求解计算</h2>
+<p>进入pitzdaily目录</p>
+<pre><code>cd  $FOAM_RUN/pitzdaily
+</code></pre><p>利用命令blockMesh生成网格</p>
+<pre><code>blockMesh
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20210706110217236.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">
+<img src="https://img-blog.csdnimg.cn/20210706110247918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">
+结束之后就是end
+利用命令simplefoam求解器进行求解
+<img src="https://img-blog.csdnimg.cn/20210706110443181.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">
+time是迭代次数</p>
+<h2 id="6计算后处理">6.计算后处理</h2>
+<p>输入命令parafoam打开后处理软件</p>
+<pre><code>paraFoam
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20210706111957324.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">点击工具栏的solid Color下拉选项，选择U（速度）选择P（压力）
+点击工具栏的三角箭头，开始运行
+<img src="https://img-blog.csdnimg.cn/20210706112231942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU1NzIzNDQ3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<pre><code>                                                               肖永清2021/08/31
+</code></pre>
+</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <h3 class="footer-title">Our time</h3>
+          <div id="footer-menu" class="footer-menu">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-home ">
+      <a href="/">
+        
+        <span>Home</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        
+        <span>Contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          
+            
+<div class="social">
+    
+        <a href="https://github.com/eilmerinchina/eilmerinchina.github.io" target="blank"><img src="/images/social/github.svg" title="Github" alt="Github" /></a>
+    
+        <a href="https://twitter.com/zerostaticio" target="blank"><img src="/images/social/twitter.svg" title="Twitter" alt="Twitter" /></a>
+    
+</div>
+
+          
+          
+            <div class="copyright">Free Hugo theme by <a class="zerostatic" href="https://www.zerostatic.io">www.zerostatic.io</a></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+
+</html>

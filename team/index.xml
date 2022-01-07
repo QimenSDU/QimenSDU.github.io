@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Team on Our time</title>
+    <link>https://qimensdu.github.io/team/</link>
+    <description>Recent content in Team on Our time</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Dec 2018 13:44:30 +1000</lastBuildDate>
+    
+	<atom:link href="https://qimensdu.github.io/team/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>韩奎华</title>
+      <link>https://qimensdu.github.io/team/hankuihua/</link>
+      <pubDate>Thu, 20 Dec 2018 13:44:30 +1000</pubDate>
+      
+      <guid>https://qimensdu.github.io/team/hankuihua/</guid>
+      <description>1978年5月生，山东大学热能工程学士、硕士、博士学位。研究方向：热力发电、清洁燃烧与污染物防治、生物质热化学转化、碳基能源材料及储能、分布式能源系统、TRIZ理论及应用等。主持和完成国家自然科学基金项目、山东省重点研发计划项目、山东省自然科学基金项目等10余项。以第一或通讯作者发表SCI、EI收录论文50余篇，申请及授权发明专利30余项。</description>
+    </item>
+    
+    <item>
+      <title>齐建荟</title>
+      <link>https://qimensdu.github.io/team/qijianhui/</link>
+      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
+      
+      <guid>https://qimensdu.github.io/team/qijianhui/</guid>
+      <description>1989年11月生，山东潍坊人，澳大利亚昆士兰大学博士，山东大学硕士、学士。研究方向：推进/发电先进动力循环技术、超临界CO2动力循环、透平及压缩机高精度数值建模及仿真、涡轮机械叶型优化、基于CO2的混合工质传热传质数值仿真、高超声速空气动力学、生物质清洁燃烧及污染物控制等。</description>
+    </item>
+    
+    <item>
+      <title>杨岳鸣</title>
+      <link>https://qimensdu.github.io/team/yangyueming/</link>
+      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
+      
+      <guid>https://qimensdu.github.io/team/yangyueming/</guid>
+      <description>杨岳鸣，男，1997年10月生，山东济南人。研究方向：超临界CO2透平及压缩机高精度数值建模及仿真、基于CO2的混合工质传热传质数值仿真。</description>
+    </item>
+    
+    <item>
+      <title>马炳坤</title>
+      <link>https://qimensdu.github.io/team/mabingkun/</link>
+      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
+      
+      <guid>https://qimensdu.github.io/team/mabingkun/</guid>
+      <description>马炳坤，男，1998年11月生，河北沧州人。研究方向：超临界二氧化碳动力循环，涡轮机械叶型优化。</description>
+    </item>
+    
+    <item>
+      <title>肖永清</title>
+      <link>https://qimensdu.github.io/team/xiaoyongqing/</link>
+      <pubDate>Thu, 20 Dec 2018 13:44:23 +1000</pubDate>
+      
+      <guid>https://qimensdu.github.io/team/xiaoyongqing/</guid>
+      <description>肖永清，男，1999年11月生，山东德州人。研究方向：基于开源计算的透平及压缩机数值建模及仿真</description>
+    </item>
+    
+  </channel>
+</rss>

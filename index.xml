@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homepage on Our time</title>
+    <link>https://qimensdu.github.io/</link>
+    <description>Recent content in Homepage on Our time</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 22 Feb 2018 17:01:34 +0700</lastBuildDate>
+    
+	<atom:link href="https://qimensdu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>韩奎华</title>
+      <link>https://qimensdu.github.io/team/hankuihua/</link>
+      <pubDate>Thu, 20 Dec 2018 13:44:30 +1000</pubDate>
+      
+      <guid>https://qimensdu.github.io/team/hankuihua/</guid>
+      <description>1978年5月生，山东大学热能工程学士、硕士、博士学位。研究方向：热力发电、清洁燃烧与污染物防治、生物质热化学转化、碳基能源材料及储能、分布式能源系统、TRIZ理论及应用等。主持和完成国家自然科学基金项目、山东省重点研发计划项目、山东省自然科学基金项目等10余项。以第一或通讯作者发表SCI、EI收录论文50余篇，申请及授权发明专利30余项。</description>
+    </item>
+    
+    <item>
+      <title>齐建荟</title>
+      <link>https://qimensdu.github.io/team/qijianhui/</link>
+      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
+      
+      <guid>https://qimensdu.github.io/team/qijianhui/</guid>
+      <description>1989年11月生，山东潍坊人，澳大利亚昆士兰大学博士，山东大学硕士、学士。研究方向：推进/发电先进动力循环技术、超临界CO2动力循环、透平及压缩机高精度数值建模及仿真、涡轮机械叶型优化、基于CO2的混合工质传热传质数值仿真、高超声速空气动力学、生物质清洁燃烧及污染物控制等。</description>
+    </item>
+    
+    <item>
+      <title>杨岳鸣</title>
+      <link>https://qimensdu.github.io/team/yangyueming/</link>
+      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
+      
+      <guid>https://qimensdu.github.io/team/yangyueming/</guid>
+      <description>杨岳鸣，男，1997年10月生，山东济南人。研究方向：超临界CO2透平及压缩机高精度数值建模及仿真、基于CO2的混合工质传热传质数值仿真。</description>
+    </item>
+    
+    <item>
+      <title>马炳坤</title>
+      <link>https://qimensdu.github.io/team/mabingkun/</link>
+      <pubDate>Mon, 19 Nov 2018 10:47:58 +1000</pubDate>
+      
+      <guid>https://qimensdu.github.io/team/mabingkun/</guid>
+      <description>马炳坤，男，1998年11月生，河北沧州人。研究方向：超临界二氧化碳动力循环，涡轮机械叶型优化。</description>
+    </item>
+    
+    <item>
+      <title>肖永清</title>
+      <link>https://qimensdu.github.io/team/xiaoyongqing/</link>
+      <pubDate>Thu, 20 Dec 2018 13:44:23 +1000</pubDate>
+      
+      <guid>https://qimensdu.github.io/team/xiaoyongqing/</guid>
+      <description>肖永清，男，1999年11月生，山东德州人。研究方向：基于开源计算的透平及压缩机数值建模及仿真</description>
+    </item>
+    
+    <item>
+      <title>OpenFOAM安装后的第一个案例的理解与运行（pitzDaily）</title>
+      <link>https://qimensdu.github.io/blog/openfoam%E5%AE%89%E8%A3%85%E5%90%8E%E8%B7%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AE%97%E4%BE%8B/</link>
+      <pubDate>Thu, 05 Aug 2021 17:20:27 +0800</pubDate>
+      
+      <guid>https://qimensdu.github.io/blog/openfoam%E5%AE%89%E8%A3%85%E5%90%8E%E8%B7%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AE%97%E4%BE%8B/</guid>
+      <description>/运用算例的目的：理解运算过程，检测OpenFOAM安装是否成功/ （学习半年后补充）对于Openfoam的运算过程，可以类比为数据的流动，首先网格的划分，计算域划分为无数的小块，计算机记录每一个小体积的中心点位置成为一个序列，每个中心点上的数据会结合控制方程变成代数式。0文件需要设置的是最外边的控制体没有来自于周边体积的数据，所以需要用户来设置。边界设定后数据不会发生更改，迭代从有差的地方开始，在一个控制体自我迭代结束后，把迭代结果给下一个控制体。下一个控制体开始迭代。以此进行下去。所说的湍流模型仅仅是增加的控制方程，目的是求解雷诺应力项（雷诺应力项是有由于时均化产生的，物理意义上讲是由于流体的脉动结果造成的）。壁面函数是为了更好的描述流体沿壁面流动而添加的方程，这样可以减少边界网格数目，加快计算。
+1.安装openfoam8 ，结束配置后开始算例** 2.依据openfoam官方教程进行算例的复制** 因为官方教程是英文版。可以参考东岳流体网上的翻译版本东岳流体 复制的过程如下（与教程基本一致） ###（1）我的电脑上没有run文件夹，所以我直接创建了run文件夹 $意思我理解为地址的缩写 这条命令等价于
+mkdir -p /home/yongqing_xiao/OpenFOAM/yongqing_xiao-8/run ###（2）进入run文件夹
+cd $FOAM_RUN (3)复制算例放run文件夹,这命令与教程不同，因为我的tutorials文件放入了opt目录 cp -r /opt/openfoam8/tutorials/incompressible/sileFoam/pitzDaily /home/yongqing_xiao/OpenFOAM/yongqing_xiao-8/run/ (4)复制成功后进入文件夹 cd $FOAM_RUN/pitzDaily 3.利用tree命令查看包含的所有文件** tree 没有此命令的安装此命令
+sudo apt-get install tree **4.##
+4.文件夹的内容 (1)costant文件下transportProperties定义介质的材料属性 在此文件中定义了粘度。直接点击文件查看即可 mometumTransport文件指定的是湍流模型（不同的版本型号可能有不同文件名）//注释的部分都是湍流模型，在选用不同的湍流模型时，需要对应的修改0文件夹中的文件 laminar 无需修改 kEpsilon 修改k文件与epsilon文件 komega 修改k文件与omega文件 LRR 修改k、epsilon和R文件 smagorinsky 修改nusgs文件 oneeqeddy 修改k与nusgs文件 SpalartAllmaras 修改nusgs与nutilda文件
+(2)0文件夹下的k文件指定各边界的湍动能 本算例中inlet边界类型fixedValue,值为0.375;outlet边界类型为zeroGradient；upperwall边界类型为kqrwallFunction，值为0.375；还有lowerwall以及forntandback epsilon文件与k文件类似，指定各边界条件的湍流耗散率 P文件与U文件无论采用哪种模型都需要修改 P文件中指定各边界的压力，需注意的是，在不可压缩流动问体重，压力的单位是m2/s2，量纲为压力与密度的比值 本算例中，指定出口outflow的压力为0，其余为zerogradient U文件中指定边界的速度分布 本算例中入口inlet速度为10m/s,outlet边界为zeroGradient，其它壁面边界为noslip
+###（3）system文件 blockmeshdict：指定几何与网格参数 controldict ：指定求解过程控制参数 fvschemes：指定求解算法 fvsolution：指定求解控制参数 streamline：流线生成
+5.求解计算 进入pitzdaily目录
+cd $FOAM_RUN/pitzdaily 利用命令blockMesh生成网格</description>
+    </item>
+    
+    <item>
+      <title>About US</title>
+      <link>https://qimensdu.github.io/about-us/</link>
+      <pubDate>Thu, 22 Feb 2018 17:01:34 +0700</pubDate>
+      
+      <guid>https://qimensdu.github.io/about-us/</guid>
+      <description>课题组以项目为引导。主要以研究超临界二氧化碳动力循环为主线，研究流体机械动力的仿真。
+Location 课题组的研究室位于山东大学热力楼四楼，热力楼一栋有着几十年历史的学校建筑。建筑共四层，402是老师办公室，齐老师经常在办公室工作到很晚，办公室的灯经常是整栋楼最后熄灭的几盏之一，齐老师坐着办公累了就会把办公桌升起来然后站着办公，老师辛苦工作的形象就是对我们最好的引领和激励。
+Study and Life 401是研究生科研场所，我们每天都会来这里学习，研究自己领域的具体问题，经常还会凑在一起讨论一个细小的问题，这里是未来科研成果的诞生地；会议室404是我们开组会的地方，会议室内的大黑板经常写满各种公式，每次组会我们都会在这间屋向老师汇报一周的进展，同时也会从老师那里学到一些新鲜的知识，每次组会都会由一位同学详细的讲述一篇高质量英文文献，平时我们遇到难解的问题也总会来这里讨论，有时候还会比较激烈。</description>
+    </item>
+    
+    <item>
+      <title>Achievement</title>
+      <link>https://qimensdu.github.io/achievement/</link>
+      <pubDate>Thu, 22 Feb 2018 17:01:34 +0700</pubDate>
+      
+      <guid>https://qimensdu.github.io/achievement/</guid>
+      <description>[1] Jianhui Qi, Hui Li, Kuihua Han*, Qi Zuo, Jie Gao, Qian Wang, Chunmei Lu. Influence of ammonium dihydrogen phosphate on potassium retention and ash melting characteristics during combustion of biomass. Energy. 102, 244-251. （TOP，IF=7.147，JCR Q1） [2] Jianhui Qi, Kuihua Han, Qian Wang, Jie Gao. Carbonization of biomass: Effect of additives on alkali metals residue, SO2 and NO emission of chars during combustion. Energy. 2017, 130, 560-569. （ TOP，IF=7.147，JCR Q1） [3] Jianhui Qi*, Thomas Reddell, Kan Qin, Kamel Hooman, Ingo H.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://qimensdu.github.io/contact/</link>
+      <pubDate>Thu, 22 Feb 2018 17:01:34 +0700</pubDate>
+      
+      <guid>https://qimensdu.github.io/contact/</guid>
+      <description>Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae crimen habet Priamum nec.
+   Day Opening Hours     Tuesday 8:30am - 5:00pm   Wednesday 8:30am - 5:00pm   Thursday 8:30am - 5:00pm   Friday 8:30am - 5:00pm   Saturday 10:am - 4:00pm   Sunday Closed    </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://qimensdu.github.io/thesis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://qimensdu.github.io/thesis/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

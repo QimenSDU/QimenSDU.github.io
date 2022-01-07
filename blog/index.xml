@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog on Our time</title>
+    <link>https://qimensdu.github.io/blog/</link>
+    <description>Recent content in blog on Our time</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 Aug 2021 17:20:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://qimensdu.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OpenFOAM安装后的第一个案例的理解与运行（pitzDaily）</title>
+      <link>https://qimensdu.github.io/blog/openfoam%E5%AE%89%E8%A3%85%E5%90%8E%E8%B7%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AE%97%E4%BE%8B/</link>
+      <pubDate>Thu, 05 Aug 2021 17:20:27 +0800</pubDate>
+      
+      <guid>https://qimensdu.github.io/blog/openfoam%E5%AE%89%E8%A3%85%E5%90%8E%E8%B7%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AE%97%E4%BE%8B/</guid>
+      <description>/运用算例的目的：理解运算过程，检测OpenFOAM安装是否成功/ （学习半年后补充）对于Openfoam的运算过程，可以类比为数据的流动，首先网格的划分，计算域划分为无数的小块，计算机记录每一个小体积的中心点位置成为一个序列，每个中心点上的数据会结合控制方程变成代数式。0文件需要设置的是最外边的控制体没有来自于周边体积的数据，所以需要用户来设置。边界设定后数据不会发生更改，迭代从有差的地方开始，在一个控制体自我迭代结束后，把迭代结果给下一个控制体。下一个控制体开始迭代。以此进行下去。所说的湍流模型仅仅是增加的控制方程，目的是求解雷诺应力项（雷诺应力项是有由于时均化产生的，物理意义上讲是由于流体的脉动结果造成的）。壁面函数是为了更好的描述流体沿壁面流动而添加的方程，这样可以减少边界网格数目，加快计算。
+1.安装openfoam8 ，结束配置后开始算例** 2.依据openfoam官方教程进行算例的复制** 因为官方教程是英文版。可以参考东岳流体网上的翻译版本东岳流体 复制的过程如下（与教程基本一致） ###（1）我的电脑上没有run文件夹，所以我直接创建了run文件夹 $意思我理解为地址的缩写 这条命令等价于
+mkdir -p /home/yongqing_xiao/OpenFOAM/yongqing_xiao-8/run ###（2）进入run文件夹
+cd $FOAM_RUN (3)复制算例放run文件夹,这命令与教程不同，因为我的tutorials文件放入了opt目录 cp -r /opt/openfoam8/tutorials/incompressible/sileFoam/pitzDaily /home/yongqing_xiao/OpenFOAM/yongqing_xiao-8/run/ (4)复制成功后进入文件夹 cd $FOAM_RUN/pitzDaily 3.利用tree命令查看包含的所有文件** tree 没有此命令的安装此命令
+sudo apt-get install tree **4.##
+4.文件夹的内容 (1)costant文件下transportProperties定义介质的材料属性 在此文件中定义了粘度。直接点击文件查看即可 mometumTransport文件指定的是湍流模型（不同的版本型号可能有不同文件名）//注释的部分都是湍流模型，在选用不同的湍流模型时，需要对应的修改0文件夹中的文件 laminar 无需修改 kEpsilon 修改k文件与epsilon文件 komega 修改k文件与omega文件 LRR 修改k、epsilon和R文件 smagorinsky 修改nusgs文件 oneeqeddy 修改k与nusgs文件 SpalartAllmaras 修改nusgs与nutilda文件
+(2)0文件夹下的k文件指定各边界的湍动能 本算例中inlet边界类型fixedValue,值为0.375;outlet边界类型为zeroGradient；upperwall边界类型为kqrwallFunction，值为0.375；还有lowerwall以及forntandback epsilon文件与k文件类似，指定各边界条件的湍流耗散率 P文件与U文件无论采用哪种模型都需要修改 P文件中指定各边界的压力，需注意的是，在不可压缩流动问体重，压力的单位是m2/s2，量纲为压力与密度的比值 本算例中，指定出口outflow的压力为0，其余为zerogradient U文件中指定边界的速度分布 本算例中入口inlet速度为10m/s,outlet边界为zeroGradient，其它壁面边界为noslip
+###（3）system文件 blockmeshdict：指定几何与网格参数 controldict ：指定求解过程控制参数 fvschemes：指定求解算法 fvsolution：指定求解控制参数 streamline：流线生成
+5.求解计算 进入pitzdaily目录
+cd $FOAM_RUN/pitzdaily 利用命令blockMesh生成网格</description>
+    </item>
+    
+  </channel>
+</rss>
